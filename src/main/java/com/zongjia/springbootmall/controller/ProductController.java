@@ -1,5 +1,6 @@
 package com.zongjia.springbootmall.controller;
 
+import com.zongjia.springbootmall.constant.ProductCategory;
 import com.zongjia.springbootmall.dto.ProductRequest;
 import com.zongjia.springbootmall.model.Product;
 import com.zongjia.springbootmall.service.ProductService;
@@ -18,8 +19,11 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    ResponseEntity<List<Product>> getProducts() {
-        List<Product> products = productService.getProducts();
+    ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory category,
+            @RequestParam(required = false) String search
+    ) {
+        List<Product> products = productService.getProducts(category, search);
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 
