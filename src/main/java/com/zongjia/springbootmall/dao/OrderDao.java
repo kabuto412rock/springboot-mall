@@ -1,11 +1,16 @@
 package com.zongjia.springbootmall.dao;
 
+import com.zongjia.springbootmall.dto.OrderQueryParams;
 import com.zongjia.springbootmall.model.Order;
 import com.zongjia.springbootmall.model.OrderItem;
 
 import java.util.List;
 
 public interface OrderDao {
+
+    Integer countOrder(OrderQueryParams orderQueryParams);
+
+    List<Order> getOrders(OrderQueryParams orderQueryParams);
 
     Order getOrderById(Integer orderId);
 
